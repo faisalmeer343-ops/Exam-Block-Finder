@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Locator · Govt Boys Higher Secondary Sindhri</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(150deg, #e9eff7 0%, #d3e0f0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .glass-card {
+            max-width: 620px;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(4px);
+            border-radius: 48px;
+            box-shadow: 0 30px 60px -15px rgba(2, 48, 71, 0.3);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.7);
+            transition: 0.25s ease;
+        }
+
+        .header {
+            background: linear-gradient(145deg, #003049, #1b4f6e);
+            color: white;
+            padding: 32px 28px 24px 28px;
+            text-align: center;
+            border-bottom: 5px solid #fcb43a;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .header h1 i {
+            color: #fcb43a;
+        }
+
+        .header .school-info {
+            background: rgba(255,255,255,0.12);
+            padding: 10px 22px;
+            border-radius: 60px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            font-weight: 500;
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+
+        .exam-badge {
+            background: #fcb43a;
+            color: #003049;
+            font-weight: 800;
+            padding: 8px 24px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 18px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 0 #b57c1a;
+        }
+
+        .main-content {
+            padding: 30px 28px 38px 28px;
+        }
+
+        .instruction {
+            color: #1b4f6e;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .input-group {
+            background: #f2f9ff;
+            border-radius: 80px;
+            padding: 6px 6px 6px 28px;
+            display: flex;
+            align-items: center;
+            border: 2px solid #b8d1e8;
+            margin: 20px 0 28px 0;
+            transition: 0.2s;
+        }
+
+        .input-group i {
+            color: #003049;
+            font-size: 1.6rem;
+            margin-right: 12px;
+        }
+
+        .input-group input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 16px 5px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            color: #003049;
+            outline: none;
+            direction: ltr;
+        }
+
+        .input-group input::placeholder {
+            color: #809bb3;
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        .action-btn {
+            background: #003049;
+            border: none;
+            color: white;
+            padding: 16px 30px;
+            border-radius: 70px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 12px 22px -5px #00304980;
+            transition: 0.18s;
+            border: 1px solid #2c6f96;
+        }
+
+        .action-btn:hover {
+            background: #0b4b6e;
+            transform: scale(1.02);
+        }
+
+        .result-panel {
+            margin-top: 35px;
+            border-radius: 50px;
+            padding: 28px 20px;
+            text-align: center;
+            font-weight: 700;
+            display: none;
+            border: 3px solid;
+            background: white;
+        }
+
+        .result-panel.success {
+            background: #e2f7e9;
+            border-color: #1b8c5e;
+            color: #0b543a;
+            display: block;
+        }
+
+        .result-panel.error {
+            background: #ffebec;
+            border-color: #c13b3b;
+            color: #8b2e2e;
+            display: block;
+        }
+
+        .class-chip {
+            background: #fcb43a;
+            color: #003049;
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-weight: 800;
+            font-size: 1.6rem;
+            display: inline-block;
+            margin: 10px 0 8px;
+            box-shadow: 0 4px 0 #b57c1a;
+        }
+
+        .block-chip {
+            background: #003049;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin: 15px 0 5px;
+            box-shadow: 0 5px 0 #012230;
+        }
+
+        .range-reference {
+            background: #f3f9ff;
+            border-radius: 40px;
+            padding: 22px 18px;
+            margin-top: 38px;
+            border: 1px dashed #7fa5c2;
+        }
+
+        .range-reference h4 {
+            color: #003049;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            font-size: 0.7rem;
+            color: #154457;
+            direction: ltr;
+        }
+
+        .ref-item {
+            background: white;
+            padding: 6px 4px;
+            border-radius: 18px;
+            border: 1px solid #c5daee;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .footer-note {
+            margin-top: 25px;
+            background: #e9f0f9;
+            border-radius: 60px;
+            padding: 12px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #003049;
+            font-weight: 500;
+        }
+
+        .github-corner {
+            position: fixed;
+            bottom: 12px;
+            left: 12px;
+            opacity: 0.5;
+            font-size: 0.8rem;
+            color: #003049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="glass-card">
+    <!-- header with school identity -->
+    <div class="header">
+        <h1>
+            <i class="fas fa-school"></i> 
+            GOVT BOYS HIGHER SECONDARY
+        </h1>
+        <div class="school-info">
+            <span><i class="fas fa-location-dot"></i> Sindhri, Taluka Sindhri, District Mirpurkhas</span>
+        </div>
+        <div class="exam-badge">
+            <i class="fas fa-calendar-alt"></i> ANNUAL EXAMINATION 2026
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="instruction">
+            <i class="fas fa-magnifying-glass"></i> Enter your seat number to find block & class
+        </div>
+
+        <!-- seat input with icon -->
+        <div class="input-group">
+            <i class="fas fa-ticket"></i>
+            <input type="number" id="seatNumber" placeholder="e.g. 105, 320, 550" value="">
+        </div>
+
+        <!-- call to action -->
+        <button class="action-btn" onclick="locateSeat()">
+            <i class="fas fa-map-signal"></i> FIND BLOCK
+        </button>
+
+        <!-- result area (dynamic) -->
+        <div id="resultDisplay" class="result-panel">
+            <!-- filled by JavaScript -->
+        </div>
+
+        <!-- quick reference table (data from the official seating plan) -->
+        <div class="range-reference">
+            <h4><i class="fas fa-table"></i> Seat Ranges – Class VI, VII, VIII</h4>
+            <div class="ref-grid">
+                <div class="ref-item"><strong>Block 1</strong><br>VI(101-116)</div>
+                <div class="ref-item"><strong>Block 1</strong><br>VII(301-316)</div>
+                <div class="ref-item"><strong>Block 1</strong><br>VIII(501-516)</div>
+                <div class="ref-item"><strong>Block 2</strong><br>VI(117-132)</div>
+                <div class="ref-item"><strong>Block 2</strong><br>VII(317-332)</div>
+                <div class="ref-item"><strong>Block 2</strong><br>VIII(517-532)</div>
+                <div class="ref-item"><strong>Block 3</strong><br>VI(133-148)</div>
+                <div class="ref-item"><strong>Block 3</strong><br>VII(333-348)</div>
+                <div class="ref-item"><strong>Block 3</strong><br>VIII(533-548)</div>
+                <div class="ref-item"><strong>Block 4</strong><br>VI(149-164)</div>
+                <div class="ref-item"><strong>Block 4</strong><br>VII(349-364)</div>
+                <div class="ref-item"><strong>Block 4</strong><br>VIII(549-564)</div>
+                <div class="ref-item"><strong>Block 5</strong><br>VI(165-180)</div>
+                <div class="ref-item"><strong>Block 5</strong><br>VII(365-380)</div>
+                <div class="ref-item"><strong>Block 5</strong><br>VIII(565-580)</div>
+                <div class="ref-item"><strong>Block 6</strong><br>VI(181-196)</div>
+                <div class="ref-item"><strong>Block 6</strong><br>VII(381-396)</div>
+                <div class="ref-item"><strong>Block 6</strong><br>VIII(581-596)</div>
+                <div class="ref-item"><strong>Block 7</strong><br>VI(197-212)</div>
+                <div class="ref-item"><strong>Block 7</strong><br>VII(397-412)</div>
+                <div class="ref-item"><strong>Block 7</strong><br>VIII(597-612)</div>
+                <div class="ref-item"><i class="fas fa-check-circle" style="color:#1b8c5e;"></i> 7 Blocks</div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <i class="fas fa-signature"></i>   F.A. (Controller of Exams)  ·  Head Master
+        </div>
+    </div>
+</div>
+
+<!-- small github watermark (professional) -->
+<div class="github-corner">
+    <i class="fab fa-github"></i> Govt Boys HSS Sindhri · Seat Locator
+</div>
+
+<script>
+    function locateSeat() {
+        const seatInput = document.getElementById('seatNumber');
+        const seat = parseInt(seatInput.value);
+        const resultDiv = document.getElementById('resultDisplay');
+
+        // validation: empty or not a number
+        if (isNaN(seat) || seatInput.value.trim() === '') {
+            resultDiv.innerHTML = `
+                <i class="fas fa-exclamation-circle" style="font-size: 3rem;"></i>
+                <div style="font-size: 1.5rem; font-weight: 700; margin-top: 8px;">Please enter a seat number</div>
+            `;
+            resultDiv.className = 'result-panel error';
+            return;
+        }
+
+        // -----------------------------------------------------
+        // SEATING PLAN – strictly according to the given image
+        // GOVT BOYS HIGHER SECONDARY SCHOOL SINDHRI, ANNUAL 2020
+        // -----------------------------------------------------
+        let block = null;
+        let className = null;
+
+        // BLOCK 01
+        if (seat >= 101 && seat <= 116) { block = "01"; className = "VI"; }
+        else if (seat >= 301 && seat <= 316) { block = "01"; className = "VII"; }
+        else if (seat >= 501 && seat <= 516) { block = "01"; className = "VIII"; }
+
+        // BLOCK 02
+        else if (seat >= 117 && seat <= 132) { block = "02"; className = "VI"; }
+        else if (seat >= 317 && seat <= 332) { block = "02"; className = "VII"; }
+        else if (seat >= 517 && seat <= 532) { block = "02"; className = "VIII"; }
+
+        // BLOCK 03
+        else if (seat >= 133 && seat <= 148) { block = "03"; className = "VI"; }
+        else if (seat >= 333 && seat <= 348) { block = "03"; className = "VII"; }
+        else if (seat >= 533 && seat <= 548) { block = "03"; className = "VIII"; }
+
+        // BLOCK 04
+        else if (seat >= 149 && seat <= 164) { block = "04"; className = "VI"; }
+        else if (seat >= 349 && seat <= 364) { block = "04"; className = "VII"; }
+        else if (seat >= 549 && seat <= 564) { block = "04"; className = "VIII"; }
+
+        // BLOCK 05
+        else if (seat >= 165 && seat <= 180) { block = "05"; className = "VI"; }
+        else if (seat >= 365 && seat <= 380) { block = "05"; className = "VII"; }
+        else if (seat >= 565 && seat <= 580) { block = "05"; className = "VIII"; }
+
+        // BLOCK 06
+        else if (seat >= 181 && seat <= 196) { block = "06"; className = "VI"; }
+        else if (seat >= 381 && seat <= 396) { block = "06"; className = "VII"; }
+        else if (seat >= 581 && seat <= 596) { block = "06"; className = "VIII"; }
+
+        // BLOCK 07
+        else if (seat >= 197 && seat <= 212) { block = "07"; className = "VI"; }
+        else if (seat >= 397 && seat <= 412) { block = "07"; className = "VII"; }
+        else if (seat >= 597 && seat <= 612) { block = "07"; className = "VIII"; }
+
+        // if found, display success
+        if (block && className) {
+            resultDiv.innerHTML = `
+                <i class="fas fa-check-circle" style="font-size: 4rem; color: #1b8c5e;"></i>
+                <div style="font-size: 1.3rem; margin: 10px 0 5px;">Seat number <strong style="direction:ltr">${seat}</strong></div>
+                <div><span class="class-chip">Class ${className}</span></div>
+                <div style="margin-top: 10px; font-size: 1.2rem;">Examination Block</div>
+                <div class="block-chip"><i class="fas fa-cube"></i> BLOCK ${block}</div>
+                <div style="margin-top: 18px; font-size: 1.1rem; font-weight: 500;">Please proceed to Block ${block}</div>
+            `;
+            resultDiv.className = 'result-panel success';
+        } 
+        // not found case
+        else {
+            resultDiv.innerHTML = `
+                <i class="fas fa-times-octagon" style="font-size: 3.5rem;"></i>
+                <div style="font-size: 1.8rem; font-weight: 800; margin: 8px 0;">Not Found</div>
+                <div style="font-size: 1.1rem;">Seat ${seat} does not exist in Class VI-VIII ranges.</div>
+                <div style="font-size: 0.95rem; margin-top: 12px;">Valid ranges: VI (101–212), VII (301–412), VIII (501–612).</div>
+            `;
+            resultDiv.className = 'result-panel error';
+        }
+    }
+
+    // allow Enter key to trigger search
+    document.getElementById('seatNumber').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            locateSeat();
+        }
+    });
+
+    // auto focus on page load
+    window.onload = function() {
+        document.getElementById('seatNumber').focus();
+    };
+</script>
+
+</body>
+</html>
