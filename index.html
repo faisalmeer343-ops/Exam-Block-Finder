@@ -464,7 +464,7 @@
             const crop = crops[id];
             const label = crop?.cropName ? crop.cropName : id.slice(0, 8);
             const date = crop?.cropDate ? ` (${crop.cropDate})` : '';
-            const display = ${label}${date};
+            const display = `${label}${date}`;
             const option = document.createElement('option');
             option.value = id;
             option.textContent = display.length > 25 ? display.slice(0,22)+'...' : display;
