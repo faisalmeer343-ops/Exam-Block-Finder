@@ -3,625 +3,639 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>اشوڪ ڪمار زرعي فارم · گھڻ فصل</title>
+    <title>فارم حساب · آپشن سان</title>
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Noto Sans Arabic', 'Segoe UI', system-ui, sans-serif;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
         }
         body {
-            background: #1b5e20;
+            background: #2e5e2e;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            padding: 8px 5px;
+            padding: 5px;
             direction: rtl;
         }
-        .app-container {
-            max-width: 520px;
+        .container {
+            max-width: 500px;
             width: 100%;
-            background: #f9fbe7;
-            border-radius: 28px 28px 20px 20px;
-            box-shadow: 0 12px 30px rgba(0, 40, 0, 0.6);
+            background: #f5f7e9;
+            border-radius: 25px;
             overflow: hidden;
-            border: 2px solid #ffb300;
-        }
-        .farm-header {
-            background: #2e7d32;
-            color: #fff9c4;
-            padding: 14px 12px 10px 12px;
-            text-align: center;
-            border-bottom: 4px solid #ff8f00;
-        }
-        .farm-header h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            line-height: 1.3;
-            text-shadow: 2px 2px 0 #1b5e20;
-        }
-        .farm-header h2 {
-            font-size: 1rem;
-            font-weight: 400;
-            background: #f57f17;
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 40px;
-            margin-top: 8px;
-            color: #ffffe0;
-        }
-        .crop-manager {
-            background: #fff3e0;
-            padding: 12px 12px 8px 12px;
-            border-bottom: 2px solid #c0a86a;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px;
-        }
-        .crop-selector {
-            flex: 2;
-            min-width: 150px;
-        }
-        .crop-selector select {
-            width: 100%;
-            padding: 10px 8px;
-            border-radius: 40px;
-            border: 2px solid #6b8e4c;
-            background: #fefef0;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        .crop-actions {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        .crop-btn {
-            background: #558b2f;
-            border: none;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 3px 0 #33691e;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            border: 1px solid #aed581;
-        }
-        .crop-btn:active { transform: translateY(3px); box-shadow: none; }
-        .crop-btn-danger { background: #b71c1c; box-shadow: 0 3px 0 #8b0000; }
-        .content {
-            padding: 14px 12px 20px 12px;
-        }
-        .section-title {
-            background: #ffb300;
-            color: #1f2a0e;
-            padding: 6px 15px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin: 18px 0 12px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-right: 6px solid #2e7d32;
-        }
-        .card {
-            background: #ffffffd9;
-            backdrop-filter: blur(2px);
-            border-radius: 18px;
-            padding: 14px 12px;
-            box-shadow: 0 4px 10px rgba(0, 30, 0, 0.2);
-            border: 1px solid #a5d6a7;
-            margin-bottom: 10px;
-        }
-        .field-group {
-            margin-bottom: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 2px solid #ffb74d;
             display: flex;
             flex-direction: column;
+            height: 98vh;
         }
-        .field-group label {
-            font-weight: 600;
-            color: #1f3a1f;
-            font-size: 0.9rem;
+        .header {
+            background: #1e4a1e;
+            color: #fff9c4;
+            padding: 12px 10px;
+            text-align: center;
+            border-bottom: 3px solid #ff9800;
+        }
+        .header h1 {
+            font-size: 1.5rem;
             margin-bottom: 3px;
-            padding-right: 6px;
         }
-        .field-group input, .field-group select {
-            background: #fefef0;
+        .header p {
+            font-size: 0.8rem;
+            background: #ff9800;
+            color: #1e4a1e;
+            display: inline-block;
+            padding: 4px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+        .crop-bar {
+            background: #fff0d4;
+            padding: 10px;
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #c0a86a;
+        }
+        .crop-bar select {
+            flex: 2;
+            min-width: 140px;
+            padding: 10px;
+            border-radius: 40px;
+            border: 2px solid #4a7c4a;
+            background: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .crop-bar button {
+            flex: 1;
+            padding: 10px 5px;
+            border: none;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 0 3px 0 #b96f00;
+            background: #ff9800;
+            color: #1e3a1e;
+            cursor: pointer;
+        }
+        .crop-bar button:active {
+            transform: translateY(3px);
+            box-shadow: none;
+        }
+        .crop-bar .del-btn {
+            background: #b71c1c;
+            color: white;
+            box-shadow: 0 3px 0 #7a0000;
+        }
+        .content {
+            padding: 12px;
+            overflow-y: auto;
+            flex: 1;
+            scrollbar-width: thin;
+            scrollbar-color: #ff9800 #c8e6c9;
+        }
+        .content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .content::-webkit-scrollbar-track {
+            background: #c8e6c9;
+            border-radius: 10px;
+        }
+        .content::-webkit-scrollbar-thumb {
+            background: #ff9800;
+            border-radius: 10px;
+        }
+        .section {
+            background: white;
+            border-radius: 18px;
+            padding: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 6px rgba(0,30,0,0.1);
+            border: 1px solid #b9d8b9;
+        }
+        .section h3 {
+            color: #1e4a1e;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1.1rem;
+            border-right: 5px solid #ff9800;
+            padding-right: 8px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            color: #1e3a1e;
+            margin-bottom: 3px;
+            font-size: 0.85rem;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px 10px;
             border: 2px solid #8bc34a;
             border-radius: 40px;
-            padding: 10px 16px;
             font-size: 0.95rem;
-            outline: none;
-            width: 100%;
+            background: #fdfdf0;
         }
-        .field-group input:focus {
+        .input-group input:focus {
             border-color: #ff9800;
-            background: #fffae6;
+            outline: none;
+            background: #fff9e6;
         }
-        .field-group input[type="number"] { text-align: left; direction: ltr; }
-        .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; }
-        .calculation-panel {
-            background: #c8e6c9;
-            border-radius: 24px;
-            padding: 16px 12px;
-            margin: 20px 0 10px 0;
+        .row2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .row3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5px;
+        }
+        .share-setting {
+            background: #e8f5e9;
+            border-radius: 20px;
+            padding: 12px;
+            margin: 10px 0;
             border: 2px solid #2e7d32;
         }
-        .calc-item {
+        .share-title {
+            font-weight: bold;
+            color: #1e4a1e;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .result-box {
+            background: #dcedc8;
+            border-radius: 18px;
+            padding: 12px;
+            margin: 12px 0;
+            border: 2px solid #2e7d32;
+        }
+        .result-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 6px 0;
             border-bottom: 1px dashed #558b2f;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
-        .calc-item .value {
+        .result-item span:last-child {
             background: #f9f9e0;
-            padding: 4px 16px;
+            padding: 5px 15px;
             border-radius: 40px;
-            color: #003300;
-            font-weight: 700;
             direction: ltr;
-        }
-        .highlight-value { background: #ffb300 !important; color: #000 !important; }
-        .readonly-fake {
-            background: #e0e0c0;
-            border: 2px solid #9e9e6b;
-            border-radius: 40px;
-            padding: 10px 16px;
-            font-weight: 700;
-            color: #003300;
-            direction: ltr;
-            text-align: left;
-        }
-        .btn-row {
-            display: flex;
-            gap: 10px;
-            margin: 25px 0 8px 0;
-            flex-wrap: wrap;
-        }
-        .btn {
-            background: #2e7d32;
-            border: none;
-            color: white;
-            padding: 12px 16px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            flex: 1 1 auto;
-            box-shadow: 0 4px 0 #1b5e20;
-            cursor: pointer;
+            min-width: 80px;
             text-align: center;
         }
-        .btn:active { transform: translateY(4px); box-shadow: none; }
-        .btn-warning { background: #bf360c; box-shadow: 0 4px 0 #872301; }
-        .footer-note { text-align: center; color: #375e37; font-size: 0.75rem; margin-top: 16px; }
+        .big-result {
+            background: #ffb300 !important;
+            font-size: 1rem;
+            font-weight: 800;
+        }
+        .action-btns {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .action-btns button {
+            flex: 1;
+            padding: 14px 8px;
+            border: none;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1rem;
+            background: #2e7d32;
+            color: white;
+            box-shadow: 0 4px 0 #1b4a1b;
+            cursor: pointer;
+        }
+        .action-btns button:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+        .action-btns .danger {
+            background: #b71c1c;
+            box-shadow: 0 4px 0 #7a0000;
+        }
+        .footer {
+            text-align: center;
+            color: #3d5e3d;
+            font-size: 0.7rem;
+            margin: 8px 0;
+        }
+        .zero-option {
+            background: #fff3cd;
+            padding: 8px 12px;
+            border-radius: 30px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .zero-option input {
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 <body>
-<div class="app-container">
-    <div class="farm-header">
-        <h1>🌾 اشوڪ ڪمار زرعي فارم</h1>
-        <h2>ھنڱورنو · گھڻ-فصل نظام</h2>
+<div class="container">
+    <div class="header">
+        <h1>🌾 اشوڪ ڪمار</h1>
+        <p>اپڊيٽ ورزن · آپشن سان</p>
     </div>
 
-    <!-- فصل مئنيجر بار -->
-    <div class="crop-manager">
-        <div class="crop-selector">
-            <select id="cropSelector"></select>
-        </div>
-        <div class="crop-actions">
-            <button class="crop-btn" id="newCropBtn">➕ نئون فصل</button>
-            <button class="crop-btn crop-btn-danger" id="deleteCropBtn">🗑️ ختم</button>
-        </div>
+    <div class="crop-bar">
+        <select id="cropSelect"></select>
+        <button id="newBtn">➕ نئون</button>
+        <button id="delBtn" class="del-btn">🗑️ ختم</button>
     </div>
 
-    <div class="content">
-        <!-- ھاري جي معلومات (مشترڪہ سڀني فصلن ۾؟ ھتي فيصلو: ھر فصل سان ڳنڍيل) -->
-        <div class="card">
-            <div class="section-title">🧑‍🌾 ھاري  (ھن فصل لاءِ)</div>
-            <div class="field-group">
-                <label>ھاري جو نالو</label>
-                <input type="text" id="farmerName" placeholder="مثال: محمد بخش">
-            </div>
-            <div class="row-2">
-                <div class="field-group"><label>شناختي ڪارڊ</label><input type="text" id="farmerCnic"></div>
-                <div class="field-group"><label>موبائل</label><input type="tel" id="farmerMobile"></div>
-            </div>
-            <div class="field-group"><label>ايڊريس</label><input type="text" id="farmerAddress"></div>
+    <div class="content" id="scrollContent">
+        <!-- زیرو قیمت والے چھپانے کا آپشن -->
+        <div class="zero-option">
+            <input type="checkbox" id="hideZeroCheck" checked>
+            <label for="hideZeroCheck" style="font-weight:600;">⚡ صفر قیمت والی انٹری نہ دکھاؤ</label>
         </div>
 
-        <!-- فصل ۽ آمدني -->
-        <div class="card">
-            <div class="section-title">🌱 فصل ۽ آمدني</div>
-            <div class="row-2">
-                <div class="field-group"><label>فصل جو نالو</label><input type="text" id="cropName"></div>
-                <div class="field-group"><label>پوکڻ جو مھينو</label><input type="text" id="plantingMonth"></div>
+        <!-- ھاري ۽ زميندار -->
+        <div class="section">
+            <h3>🧑‍🌾 ھاري ۽ زميندار</h3>
+            <div class="row2">
+                <div class="input-group"><label>ھاري جو نالو</label><input type="text" id="farmerName" placeholder="مثال: جان محمد"></div>
+                <div class="input-group"><label>زميندار جو نالو</label><input type="text" id="ownerName" placeholder="مثال: اشوڪ"></div>
             </div>
-            <div class="row-2">
-                <div class="field-group"><label>ايڪڙ</label><input type="number" id="acres" step="0.1" value="0"></div>
-                <div class="field-group"><label>تاريخ</label><input type="date" id="cropDate"></div>
-            </div>
-            <div class="field-group"><label>فصل مان کنيل رقم (آمدني)</label><input type="number" id="revenue" step="1" value="0"></div>
-            <div class="row-2">
-                <div class="field-group"><label>ھاري جي کنيل رقم</label><input type="number" id="farmerTaken" step="1" value="0"></div>
-                <div class="field-group"><label>ايڊوانس رقم</label><input type="number" id="advance" step="1" value="0"></div>
+            <div class="input-group"><label>فصل جو نالو</label><input type="text" id="cropName" placeholder="مثال: ڪڻڪ"></div>
+            <div class="row2">
+                <div class="input-group"><label>تاريخ</label><input type="date" id="cropDate"></div>
+                <div class="input-group"><label>ايڪڙ</label><input type="number" id="acres" value="0" step="0.1"></div>
             </div>
         </div>
 
-        <!-- خرچن جا تفصيل -->
-        <div class="card">
-            <div class="section-title">💰 فصل تي خرچ (مشترڪ)</div>
-            <div class="row-2">
-                <div class="field-group"><label>کيڙي جو خرچ</label><input type="number" id="landPrepCost" value="0"></div>
-                <div class="field-group"><label>کيڙي جي نوعيت</label><input type="text" id="landPrepType"></div>
-            </div>
-            <div class="row-2">
-                <div class="field-group"><label>ٻج جو خرچ</label><input type="number" id="seedCost" value="0"></div>
-                <div class="field-group"><label>ٻج جو نالو</label><input type="text" id="seedName"></div>
-            </div>
-            <div class="row-2">
-                <div class="field-group"><label>ڀاڻ جو خرچ</label><input type="number" id="fertilizerCost" value="0"></div>
-                <div class="field-group"><label>ڀاڻ جو نالو</label><input type="text" id="fertilizerName"></div>
-            </div>
-            <div class="row-2">
-                <div class="field-group"><label>دوا جو خرچ</label><input type="number" id="pesticideCost" value="0"></div>
-                <div class="field-group"><label>دوا جو نالو</label><input type="text" id="pesticideName"></div>
-            </div>
-            <div class="row-3">
-                <div class="field-group"><label>لڻائي</label><input type="number" id="harvestingCost" value="0"></div>
-                <div class="field-group"><label>مزدوري</label><input type="number" id="laborCost" value="0"></div>
-                <div class="field-group"><label>ڪرايو</label><input type="number" id="rentCost" value="0"></div>
+        <!-- آمدني ۽ کنيل رقم -->
+        <div class="section">
+            <h3>💰 آمدني ۽ کنيل</h3>
+            <div class="input-group"><label>فصل مان ڪل آمدني</label><input type="number" id="revenue" value="0"></div>
+            <div class="row2">
+                <div class="input-group"><label>ھاري کنيل</label><input type="number" id="farmerTaken" value="0"></div>
+                <div class="input-group"><label>ايڊوانس</label><input type="number" id="advance" value="0"></div>
             </div>
         </div>
 
-        <!-- زميندار -->
-        <div class="card">
-            <div class="section-title">👨‍🌾 زميندار</div>
-            <div class="row-2">
-                <div class="field-group"><label>زميندار جو خرچ</label><input type="number" id="landownerExpense" value="0"></div>
-                <div class="field-group"><label>بقايا (خودڪار)</label><div class="readonly-fake" id="landownerRemainingDisplay">0</div></div>
+        <!-- خرچ (سارا) -->
+        <div class="section">
+            <h3>🚜 خرچ (سڀ)</h3>
+            <div class="row2">
+                <div class="input-group"><label>کيڙي جو خرچ</label><input type="number" id="landPrepCost" value="0"></div>
+                <div class="input-group"><label>کيڙي جي نوعيت</label><input type="text" id="landPrepType"></div>
             </div>
+            <div class="row2">
+                <div class="input-group"><label>ٻج جو خرچ</label><input type="number" id="seedCost" value="0"></div>
+                <div class="input-group"><label>ٻج جو نالو</label><input type="text" id="seedName"></div>
+            </div>
+            <div class="row2">
+                <div class="input-group"><label>ڀاڻ جو خرچ</label><input type="number" id="fertilizerCost" value="0"></div>
+                <div class="input-group"><label>ڀاڻ جو نالو</label><input type="text" id="fertilizerName"></div>
+            </div>
+            <div class="row2">
+                <div class="input-group"><label>دوا جو خرچ</label><input type="number" id="pesticideCost" value="0"></div>
+                <div class="input-group"><label>دوا جو نالو</label><input type="text" id="pesticideName"></div>
+            </div>
+            <div class="row3">
+                <div class="input-group"><label>لڻائي</label><input type="number" id="harvestingCost" value="0"></div>
+                <div class="input-group"><label>مزدوري</label><input type="number" id="laborCost" value="0"></div>
+                <div class="input-group"><label>ڪرايو</label><input type="number" id="rentCost" value="0"></div>
+            </div>
+            <div class="input-group"><label>زميندار خرچ</label><input type="number" id="ownerExpense" value="0"></div>
         </div>
 
-        <!-- حساب پينل -->
-        <div class="calculation-panel">
-            <div class="calc-item"><span>💰 ڪل خرچ</span><span class="value" id="totalExpensesDisplay">0</span></div>
-            <div class="calc-item"><span>📈 خالص منافع</span><span class="value" id="netProfitDisplay">0</span></div>
-            <div class="calc-item"><span>👨‍🌾 ھاري جو اڌ</span><span class="value" id="farmerShareDisplay">0</span></div>
-            <div class="calc-item"><span>🧑‍🌾 زميندار جو اڌ</span><span class="value" id="landownerShareDisplay">0</span></div>
-            <div class="calc-item"><span>🔄 ھاري جي بقايا</span><span class="value highlight-value" id="farmerBalanceDisplay">0</span></div>
-            <div class="calc-item"><span>🏦 زميندار جي بقايا</span><span class="value highlight-value" id="landownerBalanceDisplay">0</span></div>
+        <!-- حصو مقرر ڪرڻ جو آپشن (Fifty-Fifty نہیں) -->
+        <div class="share-setting">
+            <div class="share-title">⚖️ حصو مقرر ڪريو (پچاس پچاس نہیں)</div>
+            <div class="row2">
+                <div class="input-group"><label>ھاري جو حصو (فيصد)</label><input type="number" id="farmerPercent" value="50" min="0" max="100" step="1"></div>
+                <div class="input-group"><label>زميندار جو حصو</label><input type="number" id="ownerPercent" value="50" min="0" max="100" step="1" readonly style="background:#e0e0e0;"></div>
+            </div>
+            <div style="font-size:0.8rem; color:#1e4a1e; text-align:center;">ھاري جو فيصد بدلايو، زميندار جو خودبخود 100 - ھاري فيصد ٿيندو</div>
         </div>
 
-        <div class="btn-row">
-            <button class="btn" id="saveCurrentBtn">💾 ھاڻي محفوظ ڪريو</button>
-            <button class="btn btn-warning" id="clearAllBtn">🗑️ سڀ فصل ختم</button>
+        <!-- نتيجو (حساب) -->
+        <div class="result-box">
+            <div class="result-item"><span>ڪل خرچ</span> <span id="totalExpense">0</span></div>
+            <div class="result-item"><span>خالص منافع</span> <span id="netProfit">0</span></div>
+            <div class="result-item"><span>ھاري حصو</span> <span id="farmerShare">0</span></div>
+            <div class="result-item"><span>زميندار حصو</span> <span id="ownerShare">0</span></div>
+            <div class="result-item"><span>ھاري بقايا</span> <span id="farmerBalance" class="big-result">0</span></div>
+            <div class="result-item"><span>زميندار بقايا</span> <span id="ownerBalance" class="big-result">0</span></div>
         </div>
-        <div class="footer-note">
-            * ھر فصل الڳ محفوظ ٿئي ٿو. مٿي ڊراپ ڊائون مان فصل چونڊيو.
+
+        <div class="action-btns">
+            <button id="saveBtn">💾 محفوظ ڪريو</button>
+            <button id="clearBtn" class="danger">🗑️ سڀ ختم</button>
         </div>
+        <div class="footer">ڊراپ ڊائون مان فصل چونڊيو · صفر واريون لڪي وينديون</div>
     </div>
 </div>
 
 <script>
 (function() {
-    // === سڀ فيلڊ ID ===
+    // سڀ فيلڊز
     const fieldIds = [
-        'farmerName','farmerCnic','farmerMobile','farmerAddress',
-        'cropName','plantingMonth','acres','cropDate',
-        'revenue','farmerTaken','advance',
-        'landPrepCost','landPrepType','seedCost','seedName',
-        'fertilizerCost','fertilizerName','pesticideCost','pesticideName',
-        'harvestingCost','laborCost','rentCost',
-        'landownerExpense'
+        'farmerName', 'ownerName', 'cropName', 'cropDate', 'acres',
+        'revenue', 'farmerTaken', 'advance',
+        'landPrepCost', 'landPrepType', 'seedCost', 'seedName',
+        'fertilizerCost', 'fertilizerName', 'pesticideCost', 'pesticideName',
+        'harvestingCost', 'laborCost', 'rentCost', 'ownerExpense'
     ];
 
-    // ڊسپلي عنصر
-    const totalExpensesSpan = document.getElementById('totalExpensesDisplay');
-    const netProfitSpan = document.getElementById('netProfitDisplay');
-    const farmerShareSpan = document.getElementById('farmerShareDisplay');
-    const landownerShareSpan = document.getElementById('landownerShareDisplay');
-    const farmerBalanceSpan = document.getElementById('farmerBalanceDisplay');
-    const landownerBalanceSpan = document.getElementById('landownerBalanceDisplay');
-    const landownerRemainingDiv = document.getElementById('landownerRemainingDisplay');
+    // IDs
+    const totalExpEl = document.getElementById('totalExpense');
+    const netProfitEl = document.getElementById('netProfit');
+    const farmerShareEl = document.getElementById('farmerShare');
+    const ownerShareEl = document.getElementById('ownerShare');
+    const farmerBalEl = document.getElementById('farmerBalance');
+    const ownerBalEl = document.getElementById('ownerBalance');
+    
+    const farmerPercentInput = document.getElementById('farmerPercent');
+    const ownerPercentInput = document.getElementById('ownerPercent');
+    const hideZeroCheck = document.getElementById('hideZeroCheck');
 
-    // فصل مئنيجر عنصر
-    const cropSelector = document.getElementById('cropSelector');
-    const newCropBtn = document.getElementById('newCropBtn');
-    const deleteCropBtn = document.getElementById('deleteCropBtn');
-    const saveCurrentBtn = document.getElementById('saveCurrentBtn');
-    const clearAllBtn = document.getElementById('clearAllBtn');
+    const cropSelect = document.getElementById('cropSelect');
+    const newBtn = document.getElementById('newBtn');
+    const delBtn = document.getElementById('delBtn');
+    const saveBtn = document.getElementById('saveBtn');
+    const clearBtn = document.getElementById('clearBtn');
 
-    // لوڪل اسٽوريج جي ڪنجي
-    const STORAGE_KEY = 'ashokMultiCrop';
+    const STORAGE_KEY = 'farmAppUpdated';
+    let currentId = null;
 
-    // موجوده فصل جي ID (منفرد)
-    let currentCropId = null;
-
-    // === مددگار فنڪشن ===
-    function getInputAsNumber(id) {
-        const el = document.getElementById(id);
-        if (!el) return 0;
-        const val = parseFloat(el.value);
+    // نمبر حاصل ڪرڻ
+    function getNum(id) {
+        const val = parseFloat(document.getElementById(id)?.value) || 0;
         return isNaN(val) ? 0 : val;
     }
 
-    // حساب اپڊيٽ
-    function updateCalculations() {
-        const landPrep = getInputAsNumber('landPrepCost');
-        const seed = getInputAsNumber('seedCost');
-        const fertilizer = getInputAsNumber('fertilizerCost');
-        const pesticide = getInputAsNumber('pesticideCost');
-        const harvest = getInputAsNumber('harvestingCost');
-        const labor = getInputAsNumber('laborCost');
-        const rent = getInputAsNumber('rentCost');
-        const landownerExtra = getInputAsNumber('landownerExpense');
+    // حساب ڪريو
+    function updateResults() {
+        // سڀ خرچ
+        const landPrep = getNum('landPrepCost');
+        const seed = getNum('seedCost');
+        const fertilizer = getNum('fertilizerCost');
+        const pesticide = getNum('pesticideCost');
+        const harvest = getNum('harvestingCost');
+        const labor = getNum('laborCost');
+        const rent = getNum('rentCost');
+        const ownerExp = getNum('ownerExpense');
+        
+        const totalCost = landPrep + seed + fertilizer + pesticide + harvest + labor + rent + ownerExp;
+        const revenue = getNum('revenue');
+        const net = revenue - totalCost;
 
-        const totalCropExpenses = landPrep + seed + fertilizer + pesticide + harvest + labor + rent;
-        const totalExpenses = totalCropExpenses + landownerExtra;
+        // فيصد جو حساب
+        let farmerPerc = parseFloat(farmerPercentInput.value) || 50;
+        if (farmerPerc < 0) farmerPerc = 0;
+        if (farmerPerc > 100) farmerPerc = 100;
+        const ownerPerc = 100 - farmerPerc;
+        ownerPercentInput.value = ownerPerc;
 
-        const revenue = getInputAsNumber('revenue');
-        const netProfit = revenue - totalExpenses;
-        const halfProfit = netProfit / 2;
+        const farmerShare = net * (farmerPerc / 100);
+        const ownerShare = net * (ownerPerc / 100);
 
-        const farmerTaken = getInputAsNumber('farmerTaken');
-        const advance = getInputAsNumber('advance');
-        const totalFarmerDrawn = farmerTaken + advance;
+        const farmerTaken = getNum('farmerTaken');
+        const advance = getNum('advance');
+        const totalFarmerDraw = farmerTaken + advance;
 
-        const farmerBalance = halfProfit - totalFarmerDrawn;
-        const landownerBalance = halfProfit;
+        const farmerBal = farmerShare - totalFarmerDraw;
+        const ownerBal = ownerShare;
 
-        // اپڊيٽ ڊسپلي
-        totalExpensesSpan.innerText = Math.round(totalExpenses);
-        netProfitSpan.innerText = Math.round(netProfit);
-        farmerShareSpan.innerText = Math.round(halfProfit);
-        landownerShareSpan.innerText = Math.round(halfProfit);
-        farmerBalanceSpan.innerText = Math.round(farmerBalance);
-        landownerBalanceSpan.innerText = Math.round(landownerBalance);
-        landownerRemainingDiv.innerText = Math.round(landownerBalance);
+        // اپڊيٽ
+        totalExpEl.innerText = Math.round(totalCost);
+        netProfitEl.innerText = Math.round(net);
+        farmerShareEl.innerText = Math.round(farmerShare);
+        ownerShareEl.innerText = Math.round(ownerShare);
+        farmerBalEl.innerText = Math.round(farmerBal);
+        ownerBalEl.innerText = Math.round(ownerBal);
 
-        // رنگ تبديل
-        farmerBalanceSpan.style.background = farmerBalance < 0 ? '#ffab91' : '#ffb300';
-        landownerBalanceSpan.style.background = landownerBalance < 0 ? '#ffab91' : '#ffb300';
-        landownerRemainingDiv.style.background = landownerBalance < 0 ? '#ffab91' : '#f9f9e0';
+        // رنگ
+        farmerBalEl.style.background = farmerBal < 0 ? '#ffab91' : '#ffb300';
+        ownerBalEl.style.background = ownerBal < 0 ? '#ffab91' : '#ffb300';
     }
 
-    // سڀ فيلڊ مان ڊيٽا ڪڍي هڪ آبجيڪٽ ۾
-    function gatherFormData() {
-        const data = {};
+    // ڊيٽا گڏ ڪريو
+    function gatherData() {
+        let data = {};
         fieldIds.forEach(id => {
-            const el = document.getElementById(id);
+            let el = document.getElementById(id);
             if (el) data[id] = el.value;
         });
+        data.farmerPercent = farmerPercentInput.value;
         return data;
     }
 
-    // ڊيٽا کي فارم ۾ لوڊ ڪريو
-    function populateForm(data) {
+    // فارم ۾ ڊيٽا وجهو
+    function fillData(data) {
         fieldIds.forEach(id => {
-            const el = document.getElementById(id);
-            if (el && data.hasOwnProperty(id)) {
-                el.value = data[id];
-            }
+            let el = document.getElementById(id);
+            if (el && data[id] !== undefined) el.value = data[id];
         });
-        updateCalculations();
+        if (data.farmerPercent) farmerPercentInput.value = data.farmerPercent;
+        updateResults();
     }
 
-    // سڀ فيلڊ ڊفالٽ تي سيٽ ڪريو (نئين فصل لاءِ)
+    // خالي ڪريو
     function clearForm() {
         fieldIds.forEach(id => {
-            const el = document.getElementById(id);
+            let el = document.getElementById(id);
             if (!el) return;
             if (el.type === 'number') el.value = '0';
             else if (el.type === 'date') {
-                const today = new Date().toISOString().split('T')[0];
+                let today = new Date().toISOString().split('T')[0];
                 el.value = today;
             } else el.value = '';
         });
-        updateCalculations();
+        farmerPercentInput.value = '50';
+        updateResults();
     }
 
-    // === لوڪل اسٽوريج آپريشن ===
-    function loadAllCrops() {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-            try {
-                return JSON.parse(stored) || {};
-            } catch { return {}; }
+    // چيڪ ڪريو ته ڇا هي رو زیرو آهي
+    function isZeroRow(data) {
+        // جيڪڏهن سڀ خرچ 0 ۽ آمدني 0 ۽ کنيل 0
+        const checks = [
+            data.revenue == 0,
+            data.farmerTaken == 0,
+            data.advance == 0,
+            data.landPrepCost == 0,
+            data.seedCost == 0,
+            data.fertilizerCost == 0,
+            data.pesticideCost == 0,
+            data.harvestingCost == 0,
+            data.laborCost == 0,
+            data.rentCost == 0,
+            data.ownerExpense == 0
+        ];
+        // جيڪڏهن سڀ صفر آهن ته true
+        return checks.every(v => v === true);
+    }
+
+    // لوڪل اسٽوريج
+    function getAll() {
+        let stored = localStorage.getItem(STORAGE_KEY);
+        try { return stored ? JSON.parse(stored) : {}; } catch { return {}; }
+    }
+
+    function saveAll(obj) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+    }
+
+    // ڊراپ ڊائون تازه ڪريو
+    function refreshDropdown(crops, selected = null) {
+        cropSelect.innerHTML = '';
+        let ids = Object.keys(crops);
+        
+        // فلٽر ڪريو جيڪڏهن آپشن آن آهي
+        const hideZero = hideZeroCheck.checked;
+        if (hideZero) {
+            ids = ids.filter(id => !isZeroRow(crops[id]));
         }
-        return {};
-    }
-
-    function saveAllCrops(crops) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(crops));
-    }
-
-    // ڊراپ ڊائون ريفريش ڪريو
-    function refreshCropDropdown(crops, selectedId = null) {
-        const selector = cropSelector;
-        selector.innerHTML = '';
-        const cropIds = Object.keys(crops);
-        if (cropIds.length === 0) {
-            const option = document.createElement('option');
-            option.textContent = '-- ڪو فصل ناهي --';
-            option.value = '';
-            selector.appendChild(option);
-            currentCropId = null;
+        
+        if (ids.length === 0) {
+            let opt = document.createElement('option');
+            opt.textContent = hideZero ? '-- ڪو به غير صفر فصل نه --' : '-- ڪو فصل نه --';
+            cropSelect.appendChild(opt);
+            currentId = null;
             return;
         }
-
-        cropIds.forEach(id => {
-            const crop = crops[id];
-            const label = crop?.cropName ? crop.cropName : id.slice(0, 8);
-            const date = crop?.cropDate ? ` (${crop.cropDate})` : '';
-            const display = `${label}${date}`;
-            const option = document.createElement('option');
-            option.value = id;
-            option.textContent = display.length > 25 ? display.slice(0,22)+'...' : display;
-            selector.appendChild(option);
+        ids.forEach(id => {
+            let crop = crops[id];
+            let label = crop?.cropName ? crop.cropName : id.slice(0,6);
+            if (crop?.cropDate) label += ` (${crop.cropDate})`;
+            let opt = document.createElement('option');
+            opt.value = id;
+            opt.textContent = label.length > 20 ? label.slice(0,18)+'..' : label;
+            cropSelect.appendChild(opt);
         });
-
-        if (selectedId && crops[selectedId]) {
-            selector.value = selectedId;
-            currentCropId = selectedId;
+        if (selected && crops[selected] && (!hideZero || !isZeroRow(crops[selected]))) {
+            cropSelect.value = selected;
+            currentId = selected;
         } else {
-            // پھريون ڊفالٽ
-            selector.value = cropIds[0];
-            currentCropId = cropIds[0];
+            cropSelect.value = ids[0];
+            currentId = ids[0];
         }
     }
 
-    // موجودہ فصل کي لوڊ ڪريو (currentCropId مطابق)
-    function loadCurrentCrop() {
-        if (!currentCropId) {
-            clearForm();
-            return;
-        }
-        const crops = loadAllCrops();
-        const cropData = crops[currentCropId];
-        if (cropData) {
-            populateForm(cropData);
-        } else {
-            clearForm();
-        }
+    function loadCurrent() {
+        if (!currentId) { clearForm(); return; }
+        let crops = getAll();
+        if (crops[currentId]) fillData(crops[currentId]);
+        else clearForm();
     }
 
-    // موجوده فصل کي محفوظ ڪريو (currentCropId سان)
-    function saveCurrentCrop() {
-        if (!currentCropId) {
-            // جيڪڏهن ڪو فصل ناهي ته نئون ٺاهيو
-            createNewCropAndSwitch(true);
-            return;
+    function createNew() {
+        let crops = getAll();
+        if (currentId && crops[currentId]) {
+            crops[currentId] = gatherData();
         }
-        const crops = loadAllCrops();
-        crops[currentCropId] = gatherFormData();
-        saveAllCrops(crops);
-        refreshCropDropdown(crops, currentCropId);
-    }
-
-    // نئون فصل ٺاهيو ۽ ان تي سوئچ ڪريو
-    function createNewCropAndSwitch(savePrevious = false) {
-        const crops = loadAllCrops();
-        // منفرد ID ٺاهيو
-        const newId = 'crop_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
-        // جيڪڏهن سيو ڪرڻ چاهيون ٿا اڳوڻي کي
-        if (savePrevious && currentCropId && crops[currentCropId]) {
-            crops[currentCropId] = gatherFormData();
-        }
-        // نئين فصل لاءِ خالي ڊيٽا
-        const emptyData = {};
+        let newId = 'f' + Date.now() + Math.random().toString(36).substring(2,6);
+        let empty = {};
         fieldIds.forEach(id => {
-            const el = document.getElementById(id);
+            let el = document.getElementById(id);
             if (el) {
-                if (el.type === 'number') emptyData[id] = '0';
-                else if (el.type === 'date') {
-                    emptyData[id] = new Date().toISOString().split('T')[0];
-                } else emptyData[id] = '';
+                if (el.type === 'number') empty[id] = '0';
+                else if (el.type === 'date') empty[id] = new Date().toISOString().split('T')[0];
+                else empty[id] = '';
             }
         });
-        crops[newId] = emptyData;
-        saveAllCrops(crops);
-        refreshCropDropdown(crops, newId);
-        loadCurrentCrop(); // populate form
+        empty.farmerPercent = '50';
+        crops[newId] = empty;
+        saveAll(crops);
+        refreshDropdown(crops, newId);
+        loadCurrent();
     }
 
-    // فصل ڊليٽ ڪريو
-    function deleteCurrentCrop() {
-        if (!currentCropId) return;
-        if (!confirm('پڪ سان ھي فصل ميسار ڪريو؟')) return;
-        const crops = loadAllCrops();
-        delete crops[currentCropId];
-        saveAllCrops(crops);
-        const ids = Object.keys(crops);
-        if (ids.length > 0) {
-            refreshCropDropdown(crops, ids[0]);
-        } else {
-            refreshCropDropdown(crops, null);
-            clearForm();
-        }
-        loadCurrentCrop();
+    function deleteCurrent() {
+        if (!currentId) return;
+        if (!confirm('ھي فصل ختم ڪريو؟')) return;
+        let crops = getAll();
+        delete crops[currentId];
+        saveAll(crops);
+        refreshDropdown(crops);
+        loadCurrent();
     }
 
-    // سڀ فصل ختم
-    function deleteAllCrops() {
-        if (!confirm('سڀ فصل ختم ڪري ڇڏيون؟ هي عمل واپس نٿو ٿي سگھي۔')) return;
+    function saveCurrent() {
+        if (!currentId) { createNew(); return; }
+        let crops = getAll();
+        crops[currentId] = gatherData();
+        saveAll(crops);
+        refreshDropdown(crops, currentId);
+        alert('محفوظ ٿي ويو');
+    }
+
+    function deleteAll() {
+        if (!confirm('پڪ سان سڀ فصل ختم؟')) return;
         localStorage.removeItem(STORAGE_KEY);
-        refreshCropDropdown({}, null);
+        refreshDropdown({}, null);
         clearForm();
     }
 
-    // === ايونٽ ھينڊلر ===
-    function attachFieldListeners() {
+    // ايونٽ لسٽنرز
+    function attachListeners() {
         fieldIds.forEach(id => {
-            const el = document.getElementById(id);
+            let el = document.getElementById(id);
             if (el) {
-                el.addEventListener('input', function() {
-                    updateCalculations();
-                });
-                el.addEventListener('change', function() {
-                    updateCalculations();
-                });
+                el.addEventListener('input', updateResults);
+                el.addEventListener('change', updateResults);
             }
+        });
+        farmerPercentInput.addEventListener('input', updateResults);
+        hideZeroCheck.addEventListener('change', function() {
+            let crops = getAll();
+            refreshDropdown(crops, currentId);
+            loadCurrent();
         });
     }
 
-    // فصل مٽائڻ تي
-    cropSelector.addEventListener('change', function(e) {
-        const newId = e.target.value;
+    cropSelect.addEventListener('change', function(e) {
+        let newId = e.target.value;
         if (!newId) return;
-        // موجوده کي خودڪار سيو ڪريو (آپشنل)
-        const crops = loadAllCrops();
-        if (currentCropId && crops[currentCropId]) {
-            crops[currentCropId] = gatherFormData();
-            saveAllCrops(crops);
+        let crops = getAll();
+        if (currentId && crops[currentId]) {
+            crops[currentId] = gatherData();
+            saveAll(crops);
         }
-        currentCropId = newId;
-        loadCurrentCrop();
+        currentId = newId;
+        loadCurrent();
     });
 
-    // بٽڻ
-    newCropBtn.addEventListener('click', function() {
-        createNewCropAndSwitch(true); // اڳوڻو محفوظ ڪري نئون کوليو
-    });
+    newBtn.addEventListener('click', createNew);
+    delBtn.addEventListener('click', deleteCurrent);
+    saveBtn.addEventListener('click', saveCurrent);
+    clearBtn.addEventListener('click', deleteAll);
 
-    deleteCropBtn.addEventListener('click', deleteCurrentCrop);
-
-    saveCurrentBtn.addEventListener('click', function() {
-        saveCurrentCrop();
-        alert('موجوده فصل محفوظ ٿي ويو');
-    });
-
-    clearAllBtn.addEventListener('click', deleteAllCrops);
-
-    // شروعاتي لوڊ
-    function initialize() {
-        const crops = loadAllCrops();
-        const ids = Object.keys(crops);
-        if (ids.length > 0) {
-            refreshCropDropdown(crops, ids[0]);
-            loadCurrentCrop();
+    // شروع
+    function init() {
+        let crops = getAll();
+        let ids = Object.keys(crops);
+        if (ids.length) {
+            refreshDropdown(crops, ids[0]);
+            loadCurrent();
         } else {
-            // ڪو فصل ناهي، هڪ خالي فصل ٺاهيو
-            createNewCropAndSwitch(false);
+            createNew();
         }
-        attachFieldListeners();
-        updateCalculations();
+        attachListeners();
+        updateResults();
     }
 
-    initialize();
-
-    // اضافي: هر 2 سيڪنڊ بعد خودڪار محفوظ (اختياري) يا بٽڻ سان
-    // سيڪڙو خودڪار نه ڪيو ويو صارف جي مرضي سان.
+    init();
 })();
 </script>
 </body>
